@@ -1,0 +1,6 @@
+# Binary
+build/
+
+# Kdevelop
+.kdev4/
+*.kdev4
