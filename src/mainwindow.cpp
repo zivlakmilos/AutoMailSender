@@ -14,5 +14,6 @@ MainWindow::~MainWindow(void)
 
 void MainWindow::setupUI(void)
 {
-    setWindowTitle(QString("%s %s %s").arg(QCoreApplication::applicationName()));
+    setWindowTitle(QString("%1 \xA9 %2").arg(QCoreApplication::applicationName(),
+                                             QCoreApplication::organizationName()));
 }
