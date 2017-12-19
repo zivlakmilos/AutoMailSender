@@ -15,6 +15,7 @@ include_directories(include/)
 include(${QT_USE_FILE})
 
 set(SOURCES
+    src/database.cpp
     src/mainwindow.cpp
     src/main.cpp
 )
