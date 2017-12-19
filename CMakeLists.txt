@@ -16,7 +16,7 @@ include(${QT_USE_FILE})
 
 set(SOURCES
     src/database.cpp
-    src/mainwindow.cpp
+    src/ui/mainwindow.cpp
     src/main.cpp
 )
 

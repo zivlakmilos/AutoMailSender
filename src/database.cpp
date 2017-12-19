@@ -33,7 +33,7 @@ bool Database::isSchemaExists(const QSqlDatabase &database)
     return false;
 }
 
-void Database::createSchema(const QSqlDatabase &database)
+bool Database::createSchema(const QSqlDatabase &database)
 {
     QString sql = "CREATE TABLE IF NOT EXISTS `appeals` ("
                   "    `id`    INTEGER,"
@@ -64,5 +64,5 @@ void Database::createSchema(const QSqlDatabase &database)
                   "    PRIMARY KEY(`id`)"
                   ");";
     QSqlQuery query(sql, database);
-    query.exec();
+    return query.exec();
 }

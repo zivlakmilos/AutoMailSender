@@ -8,7 +8,7 @@ namespace Database
     QSqlDatabase loadDatabase(void);
     QSqlDatabase getDatabase(void);
     bool isSchemaExists(const QSqlDatabase &database);
-    void createSchema(const QSqlDatabase &database);
+    bool createSchema(const QSqlDatabase &database);
 }
 
 #endif // _DATABASE_H_
