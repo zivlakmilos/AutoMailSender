@@ -3,6 +3,11 @@
 
 #include <QMainWindow>
 
+namespace Ui
+{
+    class MainWindow;
+}
+
 class MainWindow : public QMainWindow
 {
     Q_OBJECT
@@ -13,6 +18,8 @@ public:
 
 private:
     void setupUI(void);
+
+    Ui::MainWindow *ui;
 };
 
 #endif // _MAIN_WINDOW_H_

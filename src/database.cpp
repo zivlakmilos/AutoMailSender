@@ -24,7 +24,7 @@ bool Database::isSchemaExists(const QSqlDatabase &database)
     QString sql = "SELECT COUNT(*) FROM sqlite_master WHERE type='table'";
     QSqlQuery query(sql, database);
 
-    if(query.exec && query.next())
+    if(query.exec() && query.next())
     {
         if(query.value(0).toInt() < 4)
             return true;

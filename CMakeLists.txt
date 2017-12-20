@@ -16,16 +16,19 @@ include(${QT_USE_FILE})
 
 set(SOURCES
     src/database.cpp
+    src/ui/wpeoples.cpp
     src/ui/mainwindow.cpp
     src/main.cpp
 )
 
 set(HEADERS
-    include/mainwindow.h
+    include/ui/wpeoples.h
+    include/ui/mainwindow.h
 )
 
 set(UI
-    #res/ui/igra.ui
+    res/ui/wpeoples.ui
+    res/ui/mainwindow.ui
 )
 
 set(RESOURCES
