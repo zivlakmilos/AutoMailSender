@@ -8,7 +8,7 @@ QSqlDatabase Database::loadDatabase(void)
 {
     QString path = QDesktopServices::storageLocation(QDesktopServices::DataLocation) + "/database.db";
 
-    QSqlDatabase database = QSqlDatabase::addDatabase("SQLITE");
+    QSqlDatabase database = QSqlDatabase::addDatabase("QSQLITE");
     database.setDatabaseName(path);
     database.open();
     return database;
