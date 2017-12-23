@@ -19,8 +19,12 @@ public:
 private:
     void setupUI(void);
     void setupDatabase(void);
+    void setupHandlers(void);
 
     Ui::MainWindow *ui;
+
+private slots:
+    void changeCoreData(void);
 };
 
 #endif // _MAIN_WINDOW_H_

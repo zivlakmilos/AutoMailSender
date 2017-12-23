@@ -13,6 +13,7 @@ MainWindow::MainWindow(QWidget *parent)
 {
     setupDatabase();
     setupUI();
+    setupHandlers();
 }
 
 MainWindow::~MainWindow(void)
@@ -32,6 +33,12 @@ void MainWindow::setupUI(void)
     setCentralWidget(wCentral);
 }
 
+void MainWindow::setupHandlers(void)
+{
+    connect(ui->actionCoreData, SIGNAL(triggered(bool)),
+            this, SLOT(changeCoreData()));
+}
+
 void MainWindow::setupDatabase(void)
 {
     QSqlDatabase db = Database::getDatabase();
@@ -39,8 +46,7 @@ void MainWindow::setupDatabase(void)
     {
         if(Database::createSchema(db))
         {
-            DCoreData *dCoreData = new DCoreData(this);
-            dCoreData->exec();
+            changeCoreData();
         } else
         {
             QMessageBox::critical(this, QCoreApplication::applicationName(),
@@ -48,4 +54,10 @@ void MainWindow::setupDatabase(void)
             qApp->exit();
         }
     }
+}
+
+void MainWindow::changeCoreData(void)
+{
+    DCoreData *dCoreData = new DCoreData(this);
+    dCoreData->exec();
 }

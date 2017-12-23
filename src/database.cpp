@@ -52,7 +52,7 @@ bool Database::createSchema(const QSqlDatabase &database)
                   "    `email` TEXT,"
                   "    `name`  TEXT,"
                   "    `surname`   TEXT,"
-                  "    `signiture` TEXT,"
+                  "    `signature` TEXT,"
                   "    `oauth_client_id` TEXT,"
                   "    `oauth_client_secret` TEXT,"
                   "    PRIMARY KEY(`id`)"

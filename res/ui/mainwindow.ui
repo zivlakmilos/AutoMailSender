@@ -25,8 +25,20 @@
      <height>19</height>
     </rect>
    </property>
+   <widget class="QMenu" name="menuData">
+    <property name="title">
+     <string>&amp;Data</string>
+    </property>
+    <addaction name="actionCoreData"/>
+   </widget>
+   <addaction name="menuData"/>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
+  <action name="actionCoreData">
+   <property name="text">
+    <string>&amp;Core Data</string>
+   </property>
+  </action>
  </widget>
  <resources/>
  <connections/>
