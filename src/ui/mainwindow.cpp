@@ -4,6 +4,7 @@
 
 #include "ui_mainwindow.h"
 #include "database.h"
+#include "ui/dcoredata.h"
 #include "ui/wpeoples.h"
 
 MainWindow::MainWindow(QWidget *parent)
@@ -36,6 +37,15 @@ void MainWindow::setupDatabase(void)
     QSqlDatabase db = Database::getDatabase();
     if(!Database::isSchemaExists(db))
     {
-        Database::createSchema(db);
+        if(Database::createSchema(db))
+        {
+            DCoreData *dCoreData = new DCoreData(this);
+            dCoreData->exec();
+        } else
+        {
+            QMessageBox::critical(this, QCoreApplication::applicationName(),
+                                  trUtf8("Error while create database schema!"));
+            qApp->exit();
+        }
     }
 }
