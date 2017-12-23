@@ -42,7 +42,9 @@ bool Database::createSchema(const QSqlDatabase &database)
 {
     QString sql = "CREATE TABLE IF NOT EXISTS `appeals` ("
                   "    `id`    INTEGER,"
-                  "    `text`  TEXT,"
+                  "    `name`  TEXT,"
+                  "    `male`  TEXT,"
+                  "    `female`  TEXT,"
                   "    PRIMARY KEY(`id`)"
                   ");"
                   "CREATE TABLE IF NOT EXISTS `me` ("

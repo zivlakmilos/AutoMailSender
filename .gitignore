@@ -4,3 +4,6 @@ build/
 # Kdevelop
 .kdev4/
 *.kdev4
+
+# Backup
+.dia~
