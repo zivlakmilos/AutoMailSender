@@ -3,12 +3,14 @@
 #include <QtGui>
 
 #include "ui_mainwindow.h"
+#include "database.h"
 #include "ui/wpeoples.h"
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent),
       ui(new Ui::MainWindow)
 {
+    setupDatabase();
     setupUI();
 }
 
@@ -27,4 +29,13 @@ void MainWindow::setupUI(void)
     QTabWidget *wCentral = new QTabWidget(this);
     wCentral->addTab(new WPeoples(this), trUtf8("Peoples"));
     setCentralWidget(wCentral);
+}
+
+void MainWindow::setupDatabase(void)
+{
+    QSqlDatabase db = Database::getDatabase();
+    if(!Database::isSchemaExists(db))
+    {
+        Database::createSchema(db);
+    }
 }

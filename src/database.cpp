@@ -3,10 +3,15 @@
 #include <QDesktopServices>
 #include <QSqlQuery>
 #include <QVariant>
+#include <QDir>
 
 QSqlDatabase Database::loadDatabase(void)
 {
-    QString path = QDesktopServices::storageLocation(QDesktopServices::DataLocation) + "/database.db";
+    QString path = QDesktopServices::storageLocation(QDesktopServices::DataLocation);
+    QDir dir(path);
+    if(!dir.exists())
+        dir.mkpath(".");
+    path += "/database.db";
 
     QSqlDatabase database = QSqlDatabase::addDatabase("QSQLITE");
     database.setDatabaseName(path);
@@ -26,7 +31,7 @@ bool Database::isSchemaExists(const QSqlDatabase &database)
 
     if(query.exec() && query.next())
     {
-        if(query.value(0).toInt() < 4)
+        if(query.value(0).toInt() >= 4)
             return true;
     }
 
@@ -64,7 +69,18 @@ bool Database::createSchema(const QSqlDatabase &database)
                   "    `appeal`    INTEGER,"
                   "    `sex`   INTEGER,"
                   "    PRIMARY KEY(`id`)"
-                  ");";
-    QSqlQuery query(sql, database);
-    return query.exec();
+                  ");"
+                  "INSERT INTO `me` DEFAULT VALUES;";
+    QSqlQuery query(database);
+    QStringList sqls = sql.split(';');
+
+    for(auto it = sqls.begin(); it != sqls.end(); it++)
+    {
+        if(it->trimmed().isEmpty())
+            continue;
+        if(!query.exec(*it))
+            return false;
+    }
+
+    return true;
 }

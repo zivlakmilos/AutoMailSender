@@ -18,6 +18,7 @@ public:
 
 private:
     void setupUI(void);
+    void setupDatabase(void);
 
     Ui::MainWindow *ui;
 };
