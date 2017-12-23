@@ -70,6 +70,7 @@ bool Database::createSchema(const QSqlDatabase &database)
                   "    `prefix`    TEXT,"
                   "    `appeal`    INTEGER,"
                   "    `sex`   INTEGER,"
+                  "    `persisting`   INTEGER,"
                   "    PRIMARY KEY(`id`)"
                   ");"
                   "INSERT INTO `me` DEFAULT VALUES;";
