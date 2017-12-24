@@ -7,6 +7,7 @@
 #include "ui/dcoredata.h"
 #include "ui/dappeals.h"
 #include "ui/wpeoples.h"
+#include "ui/wmessages.h"
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent),
@@ -31,6 +32,7 @@ void MainWindow::setupUI(void)
 
     QTabWidget *wCentral = new QTabWidget(this);
     wCentral->addTab(new WPeoples(this), trUtf8("Peoples"));
+    wCentral->addTab(new WMessages(this), trUtf8("Messages"));
     setCentralWidget(wCentral);
 }
 

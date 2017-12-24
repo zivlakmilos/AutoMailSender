@@ -59,6 +59,7 @@ bool Database::createSchema(const QSqlDatabase &database)
                   ");"
                   "CREATE TABLE IF NOT EXISTS `messages` ("
                   "    `id`    INTEGER,"
+                  "    `subject`   TEXT,"
                   "    `message`   TEXT,"
                   "    PRIMARY KEY(`id`)"
                   ");"
