@@ -5,6 +5,7 @@
 #include "ui_mainwindow.h"
 #include "database.h"
 #include "ui/dcoredata.h"
+#include "ui/dappeals.h"
 #include "ui/wpeoples.h"
 
 MainWindow::MainWindow(QWidget *parent)
@@ -37,6 +38,8 @@ void MainWindow::setupHandlers(void)
 {
     connect(ui->actionCoreData, SIGNAL(triggered(bool)),
             this, SLOT(changeCoreData()));
+    connect(ui->actionAppels, SIGNAL(triggered(bool)),
+            this, SLOT(changeAppealData()));
 }
 
 void MainWindow::setupDatabase(void)
@@ -60,4 +63,10 @@ void MainWindow::changeCoreData(void)
 {
     DCoreData *dCoreData = new DCoreData(this);
     dCoreData->exec();
+}
+
+void MainWindow::changeAppealData(void)
+{
+    DAppeals *dAppeals = new DAppeals(this);
+    dAppeals->exec();
 }

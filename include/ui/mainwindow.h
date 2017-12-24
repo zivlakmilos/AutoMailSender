@@ -25,6 +25,7 @@ private:
 
 private slots:
     void changeCoreData(void);
+    void changeAppealData(void);
 };
 
 #endif // _MAIN_WINDOW_H_

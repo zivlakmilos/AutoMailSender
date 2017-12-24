@@ -30,6 +30,7 @@
      <string>&amp;Data</string>
     </property>
     <addaction name="actionCoreData"/>
+    <addaction name="actionAppels"/>
    </widget>
    <addaction name="menuData"/>
   </widget>
@@ -37,6 +38,11 @@
   <action name="actionCoreData">
    <property name="text">
     <string>&amp;Core Data</string>
+   </property>
+  </action>
+  <action name="actionAppels">
+   <property name="text">
+    <string>&amp;Appeals</string>
    </property>
   </action>
  </widget>

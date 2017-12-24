@@ -82,7 +82,7 @@ void WPeoples::btnDeleteClick(void)
                                                  m_model->fieldIndex("email"))).toString();
     QMessageBox msg(QMessageBox::Critical,
                     QCoreApplication::applicationName(),
-                    trUtf8("Are you sure you want to delete selected people<br />%1").arg(email),
+                    trUtf8("Are you sure you want to delete people: %1?").arg(email),
                     QMessageBox::Yes | QMessageBox::No);
     msg.setDefaultButton(QMessageBox::No);
 

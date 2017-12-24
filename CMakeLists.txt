@@ -17,6 +17,7 @@ include(${QT_USE_FILE})
 set(SOURCES
     src/database.cpp
     src/ui/dcoredata.cpp
+    src/ui/dappeals.cpp
     src/ui/wpeoples.cpp
     src/ui/mainwindow.cpp
     src/main.cpp
@@ -25,12 +26,14 @@ set(SOURCES
 set(HEADERS
     include/ui/wpeoples.h
     include/ui/dcoredata.h
+    include/ui/dappeals.h
     include/ui/mainwindow.h
 )
 
 set(UI
     res/ui/wpeoples.ui
     res/ui/dcoredata.ui
+    res/ui/dappeals.ui
     res/ui/mainwindow.ui
 )
 
