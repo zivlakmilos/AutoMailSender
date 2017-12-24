@@ -1,4 +1,4 @@
-#include "database.h"
+#include "core/database.h"
 
 #include <QDesktopServices>
 #include <QSqlQuery>

@@ -5,7 +5,7 @@
 #include <QSqlRelationalDelegate>
 
 #include "ui_wpeoples.h"
-#include "database.h"
+#include "core/database.h"
 
 WPeoples::WPeoples(QWidget *parent)
     : QWidget(parent),

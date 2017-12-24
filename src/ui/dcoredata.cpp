@@ -4,7 +4,7 @@
 #include <QSqlTableModel>
 
 #include "ui_dcoredata.h"
-#include "database.h"
+#include "core/database.h"
 
 DCoreData::DCoreData(QWidget *parent)
     : QDialog(parent),

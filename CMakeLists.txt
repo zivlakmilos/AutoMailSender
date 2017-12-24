@@ -15,7 +15,7 @@ include_directories(include/)
 include(${QT_USE_FILE})
 
 set(SOURCES
-    src/database.cpp
+    src/core/database.cpp
     src/ui/dcoredata.cpp
     src/ui/dappeals.cpp
     src/ui/wpeoples.cpp

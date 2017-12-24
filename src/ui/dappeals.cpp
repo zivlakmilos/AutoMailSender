@@ -4,7 +4,7 @@
 #include <QSqlTableModel>
 
 #include "ui_dappeals.h"
-#include "database.h"
+#include "core/database.h"
 
 DAppeals::DAppeals(QWidget *parent)
     : QDialog(parent),

@@ -3,7 +3,7 @@
 #include <QtGui>
 
 #include "ui_mainwindow.h"
-#include "database.h"
+#include "core/database.h"
 #include "ui/dcoredata.h"
 #include "ui/dappeals.h"
 #include "ui/wpeoples.h"
