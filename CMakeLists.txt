@@ -16,19 +16,23 @@ include(${QT_USE_FILE})
 
 set(SOURCES
     src/core/database.cpp
+    src/network/authentication.cpp
     src/ui/dcoredata.cpp
     src/ui/dappeals.cpp
     src/ui/wpeoples.cpp
     src/ui/wmessages.cpp
+    src/ui/wsending.cpp
     src/ui/mainwindow.cpp
     src/main.cpp
 )
 
 set(HEADERS
+    include/network/authentication.h
     include/ui/dcoredata.h
     include/ui/dappeals.h
     include/ui/wpeoples.h
     include/ui/wmessages.h
+    include/ui/wsending.h
     include/ui/mainwindow.h
 )
 
@@ -37,6 +41,7 @@ set(UI
     res/ui/dappeals.ui
     res/ui/wpeoples.ui
     res/ui/wmessage.ui
+    res/ui/wsending.ui
     res/ui/mainwindow.ui
 )
 

@@ -8,6 +8,7 @@
 #include "ui/dappeals.h"
 #include "ui/wpeoples.h"
 #include "ui/wmessages.h"
+#include "ui/wsending.h"
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent),
@@ -33,6 +34,7 @@ void MainWindow::setupUI(void)
     QTabWidget *wCentral = new QTabWidget(this);
     wCentral->addTab(new WPeoples(this), trUtf8("Peoples"));
     wCentral->addTab(new WMessages(this), trUtf8("Messages"));
+    wCentral->addTab(new WSending(this), trUtf8("Sending"));
     setCentralWidget(wCentral);
 }
 
