@@ -4,6 +4,8 @@
 #include <QtNetwork>
 #include <QDesktopServices>
 
+#include "json.hpp"
+
 Authentication::Authentication(QObject *parent)
     : QObject(parent)
 {
@@ -29,7 +31,7 @@ bool Authentication::startAuthentication(const QString &clientId, const QString 
     return QDesktopServices::openUrl(url);
 }
 
-bool Authentication::exchangeCodeForToken(const QString &authCode)
+void Authentication::exchangeCodeForToken(const QString &authCode)
 {
     m_authCode = authCode;
 
@@ -49,11 +51,23 @@ bool Authentication::exchangeCodeForToken(const QString &authCode)
     body.addQueryItem("grant_type", "authorization_code");
 
     QNetworkAccessManager *client = new QNetworkAccessManager(this);
-    connect(client, SIGNAL(finished(QNetworkReply*)), this, SLOT(test(QNetworkReply*)));
+    connect(client, SIGNAL(finished(QNetworkReply*)), this, SLOT(responseReady(QNetworkReply*)));
     client->post(request, body.encodedQuery());
 }
 
-void Authentication::test(QNetworkReply *reply)
+void Authentication::responseReady(QNetworkReply *reply)
 {
-    qDebug() << reply->readAll();
+    QString response = reply->readAll();
+    nlohmann::json json = nlohmann::json::parse(response.toStdString());
+    OAuthToken token;
+
+    try {
+        token.accessToken = QString::fromStdString(json.at("access_token"));
+        token.expiresIn = json.at("expires_in");
+        token.refreshToken = QString::fromStdString(json.at("refresh_token"));
+        token.tokenType = QString::fromStdString(json.at("token_type"));
+        emit authenticationCompleted(true, token);
+    } catch(...) {
+        emit authenticationCompleted(false, token);
+    }
 }

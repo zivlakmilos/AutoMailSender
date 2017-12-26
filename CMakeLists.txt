@@ -9,6 +9,7 @@ set(CMAKE_AUTORCC on)
 include_directories(
     ${QT_INCLUDE}
     ${CMAKE_CURRENT_BINARY_DIR}
+    3rdparty/json/src/
 )
 include_directories(include/)
 
