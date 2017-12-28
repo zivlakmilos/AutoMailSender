@@ -3,10 +3,14 @@
 
 #include <QWidget>
 
+#include "network/authentication.h"
+
 namespace Ui
 {
     class WSending;
 }
+
+class Network;
 
 class WSending : public QWidget
 {
@@ -21,8 +25,12 @@ private:
 
     Ui::WSending *ui;
 
+    Network *m_network;
+
 private slots:
     void btnAuthenticateClick(void);
+    void btnSendClick(void);
+    void authenticationCoplete(bool success, OAuthToken token);
 };
 
 #endif // _W_SENDING_H_

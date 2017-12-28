@@ -18,6 +18,7 @@ include(${QT_USE_FILE})
 set(SOURCES
     src/core/database.cpp
     src/network/authentication.cpp
+    src/network/network.cpp
     src/ui/dcoredata.cpp
     src/ui/dappeals.cpp
     src/ui/wpeoples.cpp
@@ -29,6 +30,7 @@ set(SOURCES
 
 set(HEADERS
     include/network/authentication.h
+    include/network/network.h
     include/ui/dcoredata.h
     include/ui/dappeals.h
     include/ui/wpeoples.h

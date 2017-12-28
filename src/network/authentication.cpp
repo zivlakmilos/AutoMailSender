@@ -24,7 +24,10 @@ bool Authentication::startAuthentication(const QString &clientId, const QString 
                              "redirect_uri=urn:ietf:wg:oauth:2.0:oob&"
                              "response_type=code&"
                              "client_id=%1&"
-                             "scope=https://mail.google.com/&"
+                             "scope=https://mail.google.com/+"
+                                   "https://www.googleapis.com/auth/gmail.modify+"
+                                   "https://www.googleapis.com/auth/gmail.compose+"
+                                   "https://www.googleapis.com/auth/gmail.send&"
                              "approval_prompt=force&"
                              "access_type=offline").arg(m_clientId);
     QUrl url(strUrl);
