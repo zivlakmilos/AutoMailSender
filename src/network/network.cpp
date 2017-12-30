@@ -14,18 +14,17 @@ Network::~Network(void)
 {
 }
 
-void Network::sendMail(const QString &email, const QString &subject, const QString &message)
+void Network::sendEmail(const QString &fromEamil, const QString &toEmail, const QString &subject, const QString &message)
 {
-    QString mime = "Content-Type: text/plain; charset=\"utf-8\"\n"
-                   "MIME-Version: 1.0\n"
-                   "Content-Transfer-Encoding: 8bit\n"
-                   "To: nekicneko99@gmail.com\n"
-                   "From: nekicneko99@gmail.com\n"
-                   "Subject: naslov\n\n"
-                   "Tekst poruke ide ovde";
+    QString mime = "Content-Type: text/plain; charset=\"utf-8\"\r\n"
+                   "MIME-Version: 1.0\r\n"
+                   "Content-Transfer-Encoding: 8bit\r\n"
+                   "To: " + toEmail + "\r\n"
+                   "From: " + fromEamil + "\r\n"
+                   "Subject: " + subject + "\r\n\r\n" +
+                   message;
     QString authorization = m_token.tokenType + " " + m_token.accessToken;
     QString mimeBase64 = base64Encode(mime);
-    mimeBase64 = "Q29udGVudC1UeXBlOiB0ZXh0L3BsYWluOyBjaGFyc2V0PSJ1cy1hc2NpaSIKTUlNRS1WZXJzaW9uOiAxLjAKQ29udGVudC1UcmFuc2Zlci1FbmNvZGluZzogN2JpdAp0bzogbmVraWNuZWtvOTlAZ21haWwuY29tCmZyb206IG5la2ljbmVrbzk5QGdtYWlsLmNvbQpzdWJqZWN0OiBOYXNsb3YgcG9ydWtlCgpPdm8gamUgdGVrc3QgcG9ydWtl";
     mimeBase64.replace('+', '-');
     mimeBase64.replace('/', '_');
 
@@ -43,11 +42,11 @@ void Network::sendMail(const QString &email, const QString &subject, const QStri
     };
 
     QNetworkAccessManager *client = new QNetworkAccessManager(this);
-    connect(client, SIGNAL(finished(QNetworkReply*)), this, SLOT(responseReady(QNetworkReply*)));
+    connect(client, SIGNAL(finished(QNetworkReply*)), this, SLOT(sendEmailResponse(QNetworkReply*)));
     client->post(request, QString::fromStdString(body.dump()).toUtf8());
 }
 
-QString Network::base64Encode(const QString &data)
+QString Network::base64Encode(const QString &data) const
 {
     QString result;
 
@@ -57,7 +56,7 @@ QString Network::base64Encode(const QString &data)
     return result;
 }
 
-void Network::responseReady(QNetworkReply *reply)
+void Network::sendEmailResponse(QNetworkReply *reply)
 {
     qDebug() << reply->readAll();
 }

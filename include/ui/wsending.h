@@ -10,6 +10,9 @@ namespace Ui
     class WSending;
 }
 
+class QSqlTableModel;
+class QDataWidgetMapper;
+
 class Network;
 
 class WSending : public QWidget
@@ -21,11 +24,16 @@ public:
     virtual ~WSending(void);
 
 private:
+    void setupModels(void);
     void setupHandlers(void);
 
     Ui::WSending *ui;
 
     Network *m_network;
+    QSqlTableModel *m_model;
+    QDataWidgetMapper *m_mapper;
+
+    QString m_myEmail;
 
 private slots:
     void btnAuthenticateClick(void);

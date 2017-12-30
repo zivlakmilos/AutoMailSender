@@ -68,6 +68,7 @@ bool Database::createSchema(const QSqlDatabase &database)
                   "    `email` TEXT,"
                   "    `name`  TEXT,"
                   "    `surname`   TEXT,"
+                  "    `display_name` TEXT,"
                   "    `prefix`    TEXT,"
                   "    `appeal`    INTEGER,"
                   "    `sex`   INTEGER,"
