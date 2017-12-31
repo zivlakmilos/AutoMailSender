@@ -6,6 +6,7 @@
 
 #include "ui_wsending.h"
 #include "core/database.h"
+#include "core/parser.h"
 #include "network/authentication.h"
 #include "network/network.h"
 
@@ -79,10 +80,12 @@ void WSending::btnAuthenticateClick(void)
         QString email = query.value(1).toString();
         QString name = query.value(2).toString();
         QString surname = query.value(3).toString();
+        QString signature = query.value(4).toString();
         QString oAuthClientId = query.value(5).toString();
         QString oAuthClientSecret = query.value(6).toString();
 
         m_myEmail = name + " " + surname + " <" + email + ">";
+        m_mySignature = signature;
 
         Authentication *auth = new Authentication(this);
         auth->startAuthentication(oAuthClientId, oAuthClientSecret);
@@ -103,6 +106,7 @@ void WSending::btnSendClick(void)
                        "    p.email,"
                        "    p.name,"
                        "    p.surname,"
+                       "    p.display_name,"
                        "    p.prefix,"
                        "    p.sex,"
                        "    p.persisting,"
@@ -118,17 +122,25 @@ void WSending::btnSendClick(void)
             QString email = query.value(1).toString();
             QString name = query.value(2).toString();
             QString surname = query.value(3).toString();
-            QString prefix = query.value(4).toString();
-            int sex = query.value(5).toInt();
-            bool persisting = query.value(6).toInt();
-            QString appealMale = query.value(7).toString();
-            QString appealFemale = query.value(8).toString();
+            QString displayName = query.value(4).toString();
+            QString prefix = query.value(5).toString();
+            int sex = query.value(6).toInt();
+            bool persisting = query.value(7).toInt();
+            QString appealMale = query.value(8).toString();
+            QString appealFemale = query.value(9).toString();
 
             QString toEmail = name + " " + surname + " <" + email + ">";
             QString subject = m_model->data(m_model->index(ui->tblMessages->currentIndex().row(),
                                                            m_model->fieldIndex("subject"))).toString();
             QString message = m_model->data(m_model->index(ui->tblMessages->currentIndex().row(),
                                                            m_model->fieldIndex("message"))).toString();
+
+            QMap<QString, QString> mapping;
+            mapping.insert("{appeal}", sex ? appealFemale : appealMale);
+            mapping.insert("{display_name}", displayName);
+            mapping.insert("{prefix}", prefix);
+            mapping.insert("{signature}", m_mySignature);
+            message = Parser::parseMessage(message, mapping, persisting);
             m_network->sendEmail(m_myEmail, toEmail, subject, message);
         }
     }

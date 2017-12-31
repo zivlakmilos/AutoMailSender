@@ -34,6 +34,7 @@ private:
     QDataWidgetMapper *m_mapper;
 
     QString m_myEmail;
+    QString m_mySignature;
 
 private slots:
     void btnAuthenticateClick(void);

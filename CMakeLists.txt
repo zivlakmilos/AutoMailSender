@@ -17,6 +17,7 @@ include(${QT_USE_FILE})
 
 set(SOURCES
     src/core/database.cpp
+    src/core/parser.cpp
     src/network/authentication.cpp
     src/network/network.cpp
     src/ui/dcoredata.cpp
