@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 2.8)
-project(MalaMatematika)
+project(AutoMailSender)
 
 find_package(Qt4 COMPONENTS QtCore QtGui QtSql QtNetwork REQUIRED)
 
